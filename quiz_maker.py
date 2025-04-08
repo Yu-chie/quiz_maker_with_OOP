@@ -16,13 +16,18 @@
 #Function to save quiz data to file
 
 #Main Function
-
+def main():
+    print("===== Quiz Maker =====")
+    
     #Open a file in append mode to save data
+    file = open("quiz_data.txt", "a")
     
         #Loop through each question and save it
-        
+                
         #Ask if the user wants to continue adding questions or not
 
     #Close File
-
+    file.close()
 #Run program
+if __name__ == "__main__":
+    main()
