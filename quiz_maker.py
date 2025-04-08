@@ -60,7 +60,7 @@ def main():
         num_question = number_of_questions()
         
         #Loop through each question and save it
-        for i in range(number_of_questions):
+        for i in range(num_question):
             question, choice_a, choice_b, choice_c, choice_d, correct_answer = question_data(i)
             save_to_file(file, i, question, choice_a, choice_b, choice_c, choice_d, correct_answer) 
         
