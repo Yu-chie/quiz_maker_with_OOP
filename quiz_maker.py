@@ -40,8 +40,8 @@ def question_data(i):
     return question, choice_a, choice_b, choice_c, choice_d, correct_answer
 
 #Function to save quiz data to file
-def save_to_file(file, i, question, choice_a, choice_b, choice_c, choice_d, correct_answer):
-    file.write(f"\nQuestion #{i+1}")
+def save_to_file(file, question_counter, question, choice_a, choice_b, choice_c, choice_d, correct_answer):
+    file.write(f"\nQuestion #{question_counter}")
     file.write(f"\n{question}")
     file.write(f"\na. {choice_a}")
     file.write(f"\nb. {choice_b}")
@@ -56,13 +56,16 @@ def main():
     #Open a file in append mode to save data
     file = open("quiz_data.txt", "a")
     
+    question_counter = 1
+    
     while True:
         num_question = number_of_questions()
         
         #Loop through each question and save it
         for i in range(num_question):
             question, choice_a, choice_b, choice_c, choice_d, correct_answer = question_data(i)
-            save_to_file(file, i, question, choice_a, choice_b, choice_c, choice_d, correct_answer) 
+            save_to_file(file, question_counter, question, choice_a, choice_b, choice_c, choice_d, correct_answer) 
+            question_counter += 1
         
         #Ask if the user wants to continue adding questions or not
         continue_input = input("\nDo you wish to add more questions (y/n): ").strip().lower()
