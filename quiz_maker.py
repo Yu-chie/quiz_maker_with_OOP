@@ -38,6 +38,14 @@ def question_data(i):
             print("Please enter a valid answer (a, b, c, d)")
 
 #Function to save quiz data to file
+def save_to_file(file, i, question, choice_a, choice_b, choice_c, choice_d, correct_answer):
+    file.write(f"\nQuestion #{i+1}")
+    file.write(f"\n{question}")
+    file.write(f"\na. {choice_a}")
+    file.write(f"\na. {choice_b}")
+    file.write(f"\na. {choice_c}")
+    file.write(f"\na. {choice_d}")
+    file.write(f"\nCorrect Answer: {correct_answer}")
 
 #Main Function
 def main():
