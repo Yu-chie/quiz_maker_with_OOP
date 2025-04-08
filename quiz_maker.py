@@ -31,7 +31,7 @@ def question_data(i):
     
     #Ask user for correct answer, must be in [a, b, c, d] 
     while True:
-        correct_answer = input("Enter correct answer: ")
+        correct_answer = input("\nEnter correct answer: ")
         if correct_answer in ['a', 'b', 'c', 'd']:
             break
         else:
@@ -47,7 +47,7 @@ def save_to_file(file, i, question, choice_a, choice_b, choice_c, choice_d, corr
     file.write(f"\nb. {choice_b}")
     file.write(f"\nc. {choice_c}")
     file.write(f"\nd. {choice_d}")
-    file.write(f"\nCorrect Answer: {correct_answer}")
+    file.write(f"\nCorrect Answer: {correct_answer}\n")
 
 #Main Function
 def main():
@@ -65,7 +65,7 @@ def main():
             save_to_file(file, i, question, choice_a, choice_b, choice_c, choice_d, correct_answer) 
         
         #Ask if the user wants to continue adding questions or not
-        continue_input = input("Do you wish to add more questions (y/n): ").strip().lower()
+        continue_input = input("\nDo you wish to add more questions (y/n): ").strip().lower()
         if continue_input != 'y':
             print("Exiting program...")
             break
