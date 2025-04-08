@@ -56,7 +56,13 @@ def main():
     #Open a file in append mode to save data
     file = open("quiz_data.txt", "a")
     
+    while True:
+        num_question = number_of_questions()
+        
         #Loop through each question and save it
+        for i in range(number_of_questions):
+            question, choice_a, choice_b, choice_c, choice_d, correct_answer = question_data(i)
+            save_to_file(file, i, question, choice_a, choice_b, choice_c, choice_d, correct_answer) 
         
         #Ask if the user wants to continue adding questions or not
 
