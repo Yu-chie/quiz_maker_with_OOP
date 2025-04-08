@@ -65,7 +65,11 @@ def main():
             save_to_file(file, i, question, choice_a, choice_b, choice_c, choice_d, correct_answer) 
         
         #Ask if the user wants to continue adding questions or not
-
+        continue_input = input("Do you wish to add more questions (y/n): ").strip().lower()
+        if continue_input != y:
+            print("Exiting program...")
+            break
+                
     #Close File
     file.close()
 #Run program
