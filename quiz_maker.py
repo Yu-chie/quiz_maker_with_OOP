@@ -42,9 +42,9 @@ def save_to_file(file, i, question, choice_a, choice_b, choice_c, choice_d, corr
     file.write(f"\nQuestion #{i+1}")
     file.write(f"\n{question}")
     file.write(f"\na. {choice_a}")
-    file.write(f"\na. {choice_b}")
-    file.write(f"\na. {choice_c}")
-    file.write(f"\na. {choice_d}")
+    file.write(f"\nb. {choice_b}")
+    file.write(f"\nc. {choice_c}")
+    file.write(f"\nd. {choice_d}")
     file.write(f"\nCorrect Answer: {correct_answer}")
 
 #Main Function
@@ -55,7 +55,7 @@ def main():
     file = open("quiz_data.txt", "a")
     
         #Loop through each question and save it
-                
+        
         #Ask if the user wants to continue adding questions or not
 
     #Close File
