@@ -66,7 +66,7 @@ def main():
         
         #Ask if the user wants to continue adding questions or not
         continue_input = input("Do you wish to add more questions (y/n): ").strip().lower()
-        if continue_input != y:
+        if continue_input != 'y':
             print("Exiting program...")
             break
                 
