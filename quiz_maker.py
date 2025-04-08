@@ -16,8 +16,8 @@ def number_of_questions():
             print("Invalid input. Enter a number")
 
 #Function to ask for a single question and its options
-def question_data(i):
-    print(f"\nQuestion #{i+1}")
+def question_data(question_counter):
+    print(f"\nQuestion #{question_counter}")
     
     #Ask user for a question
     question = input("Enter your question: ")
@@ -63,7 +63,7 @@ def main():
         
         #Loop through each question and save it
         for i in range(num_question):
-            question, choice_a, choice_b, choice_c, choice_d, correct_answer = question_data(i)
+            question, choice_a, choice_b, choice_c, choice_d, correct_answer = question_data(question_counter)
             save_to_file(file, question_counter, question, choice_a, choice_b, choice_c, choice_d, correct_answer) 
             question_counter += 1
         
