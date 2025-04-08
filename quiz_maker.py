@@ -4,6 +4,16 @@
 #Ask another question until the user chose to exit
 
 #Function to ask number of questions to add
+def number_of_questions():
+    while True:
+        try:
+            num_questions = int(input("How many questions do you wish to add: "))
+            if num_questions <= 0:
+                print("Enter another number")
+                continue
+            return num_questions
+        except ValueError:
+            print("Invalid input. Enter a number")
 
 #Function to ask for a single question and its options
 
