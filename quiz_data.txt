@@ -1,15 +1,16 @@
 
 Question #1
-What is the capital of the Philippines?
-a. Cebu
-b. Quezon City
-c. Manila
-d. Antipolo
+What is the imaginary/invisible line that runs around the middle of the Earth dividing it into the Northern and Southern Hemispheres?
+a. Prime Meridian
+b. Equator
+c. Longitude
+d. Latitude
 Correct Answer: b
-Question #1
-What is the capital of Japan?
-a. Osaka
-b. Nagoya
-c. Tokyo
-d. Kyoto
+
+Question #2
+What is 3.14159... called?
+a. Random numbers
+b. Pie
+c. Pi
+d. I dont know
 Correct Answer: c
