@@ -16,12 +16,26 @@ def number_of_questions():
             print("Invalid input. Enter a number")
 
 #Function to ask for a single question and its options
-
+def question_data(i):
+    print(f"\nQuestion #{i+1}")
+    
     #Ask user for a question
-
+    question = input("Enter your question: ")
+    
     #Ask user for choices
+    print("\nEnter 4 choices")
+    choice_a = input("a. ")
+    choice_b = input("b. ")
+    choice_c = input("c. ")
+    choice_d = input("d. ")
     
     #Ask user for correct answer, must be in [a, b, c, d] 
+    while True:
+        correct_answer = input("Enter correct answer: ")
+        if correct_answer in ['a', 'b', 'c', 'd']:
+            break
+        else:
+            print("Please enter a valid answer (a, b, c, d)")
 
 #Function to save quiz data to file
 
