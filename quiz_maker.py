@@ -66,7 +66,7 @@ def view_questions():
 def delete_question():
     confirm = input("Are you sure you want to delete all questions? (y/n): ").lower()
     if confirm == 'y':
-        with open('questions.txt', 'w') as file:
+        with open('quiz_data.txt', 'w') as file:
             file.truncate(0)
         print("All questions have been deleted.")
     else:
