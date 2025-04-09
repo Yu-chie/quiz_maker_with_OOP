@@ -13,7 +13,7 @@ def clear_console():
     os.system("cls" if os.name == "nt" else "clear")
 
 #Function to ask number of questions to add
-def number_of_questions():
+def number_of_questions():  
     while True:
         try:
             num_questions = int(input(Fore.CYAN + "\nHow many questions do you wish to add: "))
@@ -86,12 +86,18 @@ def delete_question():
                     
 #Function to add questions
 def add_questions():
-        
+    
+    #Count how many questions already exists
+    try:
+        with open("quiz_data.txt", "r") as file:
+            existing_data = file.read()
+            question_counter = existing_data.count("Question #") + 1
+    except FileNotFoundError:
+        question_counter = 1
+    
     #Open a file in append mode to save data
     file = open("quiz_data.txt", "a")
-    
-    question_counter = 1
-    
+      
     while True:
         num_question = number_of_questions()
         
