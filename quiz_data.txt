@@ -1,16 +1,8 @@
 
 Question #1
-What is the imaginary/invisible line that runs around the middle of the Earth dividing it into the Northern and Southern Hemispheres?
-a. Prime Meridian
-b. Equator
-c. Longitude
-d. Latitude
-Correct Answer: b
-
-Question #2
-What is 3.14159... called?
-a. Random numbers
-b. Pie
-c. Pi
-d. I dont know
-Correct Answer: c
+Who is the first man?
+a. Tom
+b. John
+c. Tony
+d. Adam
+Correct Answer: d
