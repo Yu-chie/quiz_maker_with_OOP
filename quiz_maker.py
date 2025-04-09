@@ -49,7 +49,7 @@ def save_to_file(file, question_counter, question, choice_a, choice_b, choice_c,
     file.write(f"\nd. {choice_d}")
     file.write(f"\nCorrect Answer: {correct_answer}\n")
 
-#Function to view Question data
+#Function to view question data
 def view_questions():
     try:
         with open("quiz_data.txt", "r") as file:
@@ -61,7 +61,38 @@ def view_questions():
                 print("No questions available.")
     except FileNotFoundError:
         print("No quiz data file found.")
-
+        
+#Function to delete question data
+def delete_question():
+    try:
+        with open("quiz_data.txt", "r") as file:        #Open file and read its contents
+            content = file.readlines()
+            
+        if not content:
+            print("No questions to delete.")
+            return
+        
+        print("\nCurrent Questions:")       #Display questions with their number
+        for idx, line in enumerate(content, 1):
+            print(f"{idx}: {line.strip()}")
+        
+        try:
+            question_number = input("\nEnter the question number you want to delete: ")
+            
+            if question_number < 1 or question_number > len(content):       # Check if the entered number is valid
+                print("Enter valid question number.")
+                
+            else:
+                del content[question_number - 1]        #Delete question
+                with open("quiz_data.txt", "w") as file:
+                    file.writelines(content)
+                print(f"Question #{question_number} has been deleted.")
+                
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+    except FileNotFoundError:
+        print("The file doesn't exist. Please add questions first.")
+                    
 #Main Function
 def main():
     print("===== Quiz Maker =====")
