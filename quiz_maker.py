@@ -3,27 +3,36 @@
 #Write the collected data to a text file.
 #Ask another question until the user chose to exit
 
+import time
+import os
+from colorama import init, Fore, Back, Style
+init(autoreset=True)
+
+#Function to clear console
+def clear_console():     
+    os.system("cls" if os.name == "nt" else "clear")
+
 #Function to ask number of questions to add
 def number_of_questions():
     while True:
         try:
-            num_questions = int(input("How many questions do you wish to add: "))
+            num_questions = int(input(Fore.CYAN + "\nHow many questions do you wish to add: "))
             if num_questions <= 0:
-                print("Enter another number")
+                print(Fore.RED + "Enter another number")
                 continue
             return num_questions
         except ValueError:
-            print("Invalid input. Enter a number")
+            print(Fore.RED + "Invalid input. Enter a number")
 
 #Function to ask for a single question and its options
 def question_data(question_counter):
-    print(f"\nQuestion #{question_counter}")
+    print(Fore.CYAN + Style.BRIGHT + f"\nQuestion #{question_counter}")
     
     #Ask user for a question
-    question = input("Enter your question: ")
+    question = input(Fore.GREEN + "Enter your question: " + Style.RESET_ALL)
     
     #Ask user for choices
-    print("\nEnter 4 choices")
+    print(Fore.GREEN + "\nEnter 4 choices")
     choice_a = input("a. ")
     choice_b = input("b. ")
     choice_c = input("c. ")
@@ -31,11 +40,11 @@ def question_data(question_counter):
     
     #Ask user for correct answer, must be in [a, b, c, d] 
     while True:
-        correct_answer = input("\nEnter correct answer: ")
+        correct_answer = input(Fore.GREEN + "\nEnter correct answer: " + Style.RESET_ALL)
         if correct_answer in ['a', 'b', 'c', 'd']:
             break
         else:
-            print("Please enter a valid answer (a, b, c, d)")
+            print(Fore.RED + "Please enter a valid answer (a, b, c, d)")
 
     return question, choice_a, choice_b, choice_c, choice_d, correct_answer
 
@@ -55,22 +64,25 @@ def view_questions():
         with open("quiz_data.txt", "r") as file:
             content = file.read()
             if content:
-                print("\n===== Questions =====")
+                print(Fore.MAGENTA + Style.BRIGHT + "\n========== Questions ==========")
                 print(content)
+                print(Fore.MAGENTA + Style.BRIGHT + "\n===============================")
             else:
-                print("No questions available.")
+                print(Fore.RED + "No questions available.")
     except FileNotFoundError:
-        print("No quiz data file found.")
+        print(Fore.RED + "No quiz data file found.")
         
 #Function to delete question data
 def delete_question():
-    confirm = input("Are you sure you want to delete all questions? (y/n): ").lower()
+    confirm = input(Fore.RED + "Are you sure you want to delete all questions? (y/n): ").lower()
     if confirm == 'y':
         with open('quiz_data.txt', 'w') as file:
             file.truncate(0)
-        print("\nAll questions have been deleted.")
+        print(Fore.GREEN + "\nAll questions have been deleted.")
+        time.sleep(2)
     else:
-        print("No questions to delete.")
+        print(Fore.YELLOW + "No questions to delete.")
+        time.sleep(2)
                     
 #Function to add questions
 def add_questions():
@@ -90,9 +102,11 @@ def add_questions():
             question_counter += 1
         
         #Ask if the user wants to continue adding questions or not
-        continue_input = input("\nDo you wish to add more questions (y/n): ").strip().lower()
+        continue_input = input(Fore.YELLOW + "\nDo you wish to add more questions (y/n): ").strip().lower()
         if continue_input != 'y':
-            print("Returning to main menu...")
+            print(Fore.GREEN + "Returning to main menu...")
+            time.sleep(2)
+            clear_console()
             break
                 
     #Close File
@@ -100,12 +114,14 @@ def add_questions():
 
 #Main menu Function
 def main_menu():
+    clear_console()
     while True:
-        print("\n===== Quiz Maker =====")
-        print("1. Add Questions")
-        print("2. View Questions")
-        print("3. Delete a Question")
-        print("4. Exit")
+        print(Fore.CYAN + Style.BRIGHT + "\n========== Quiz Maker ==========")
+        print(Fore.GREEN + Style.BRIGHT + "1. " + Style.RESET_ALL + "Add Questions")
+        print(Fore.GREEN + Style.BRIGHT + "2. " + Style.RESET_ALL + "View Questions")
+        print(Fore.GREEN + Style.BRIGHT + "3. " + Style.RESET_ALL + "Delete Questions")
+        print(Fore.GREEN + Style.BRIGHT + "4. " + Style.RESET_ALL + "Exit")
+        print(Fore.CYAN + Style.BRIGHT + "================================")
 
         choice = int(input("Choose an option (1-4): "))
         
@@ -117,9 +133,11 @@ def main_menu():
             delete_question()
         elif choice == 4:
             print("Exiting program...")
+            time.sleep(1)
             break
         else:
-            print("Invalid choice. Please select a valid option.")
+            print(Fore.RED + "Invalid choice. Please select a valid option.")
+            time.sleep(1)
 
 #Run program
 if __name__ == "__main__":
