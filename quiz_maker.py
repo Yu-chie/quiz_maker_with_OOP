@@ -49,6 +49,19 @@ def save_to_file(file, question_counter, question, choice_a, choice_b, choice_c,
     file.write(f"\nd. {choice_d}")
     file.write(f"\nCorrect Answer: {correct_answer}\n")
 
+#Function to view Question data
+def view_questions():
+    try:
+        with open("quiz_data.txt", "r") as file:
+            content = file.read()
+            if content:
+                print("\n===== Questions =====")
+                print(content)
+            else:
+                print("No questions available.")
+    except FileNotFoundError:
+        print("No quiz data file found.")
+
 #Main Function
 def main():
     print("===== Quiz Maker =====")
@@ -75,6 +88,7 @@ def main():
                 
     #Close File
     file.close()
+    
 #Run program
 if __name__ == "__main__":
     main()
