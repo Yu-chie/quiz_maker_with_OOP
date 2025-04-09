@@ -93,10 +93,9 @@ def delete_question():
     except FileNotFoundError:
         print("The file doesn't exist. Please add questions first.")
                     
-#Main Function
-def main():
-    print("===== Quiz Maker =====")
-    
+#Function to add questions
+def add_questions():
+        
     #Open a file in append mode to save data
     file = open("quiz_data.txt", "a")
     
@@ -119,7 +118,7 @@ def main():
                 
     #Close File
     file.close()
-    
+
 #Run program
 if __name__ == "__main__":
     main()
