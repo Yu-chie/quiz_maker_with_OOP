@@ -64,34 +64,14 @@ def view_questions():
         
 #Function to delete question data
 def delete_question():
-    try:
-        with open("quiz_data.txt", "r") as file:        #Open file and read its contents
-            content = file.readlines()
-            
-        if not content:
-            print("No questions to delete.")
-            return
-        
-        print("\nCurrent Questions:")       #Display questions with their number
-        for idx, line in enumerate(content, 1):
-            print(f"{idx}: {line.strip()}")
-        
-        try:
-            question_number = input("\nEnter the question number you want to delete: ")
-            
-            if question_number < 1 or question_number > len(content):       # Check if the entered number is valid
-                print("Enter valid question number.")
-                
-            else:
-                del content[question_number - 1]        #Delete question
-                with open("quiz_data.txt", "w") as file:
-                    file.writelines(content)
-                print(f"Question #{question_number} has been deleted.")
-                
-        except ValueError:
-            print("Invalid input. Please enter a valid number.")
-    except FileNotFoundError:
-        print("The file doesn't exist. Please add questions first.")
+    confirm = input("Are you sure you want to delete all questions? (y/n): ").lower()
+    if confirm == 'y':
+        with open('questions.txt', 'w') as file:
+            file.truncate(0)
+        print("All questions have been deleted.")
+    else:
+        print("No questions to delete.")
+    main_menu()
                     
 #Function to add questions
 def add_questions():
