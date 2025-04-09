@@ -68,7 +68,7 @@ def delete_question():
     if confirm == 'y':
         with open('quiz_data.txt', 'w') as file:
             file.truncate(0)
-        print("All questions have been deleted.")
+        print("\nAll questions have been deleted.")
     else:
         print("No questions to delete.")
     main_menu()
