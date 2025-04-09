@@ -1,0 +1,32 @@
+
+Question #1
+What is the capital of the Philippines?
+a. Quezon City
+b. Antipolo
+c. Manila
+d. Batanggas
+Correct Answer: c
+
+Question #2
+What is the capital of Japan?
+a. Kyoto
+b. Osaka
+c. Tokyo
+d. Aichi
+Correct Answer: c
+
+Question #3
+1 + 4
+a. 1
+b. 5
+c. 7
+d. No correct answer
+Correct Answer: d
+
+Question #4
+4 ** 2 = ?
+a. 8
+b. 24
+c. 16
+d. 4
+Correct Answer: c
