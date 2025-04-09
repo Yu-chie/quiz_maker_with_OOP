@@ -113,7 +113,7 @@ def add_questions():
         #Ask if the user wants to continue adding questions or not
         continue_input = input("\nDo you wish to add more questions (y/n): ").strip().lower()
         if continue_input != 'y':
-            print("Exiting program...")
+            print("Returning to main menu...")
             break
                 
     #Close File
@@ -130,13 +130,13 @@ def main_menu():
 
         choice = int(input("Choose an option (1-4): "))
         
-        if choice == '1':
+        if choice == 1:
             add_questions()
-        elif choice == '2':
+        elif choice == 2:
             view_questions()
-        elif choice == '3':
+        elif choice == 3:
             delete_question()
-        elif choice == '4':
+        elif choice == 4:
             print("Exiting program...")
             break
         else:
@@ -144,4 +144,4 @@ def main_menu():
 
 #Run program
 if __name__ == "__main__":
-    main()
+    main_menu()
