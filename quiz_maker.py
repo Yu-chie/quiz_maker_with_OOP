@@ -119,6 +119,29 @@ def add_questions():
     #Close File
     file.close()
 
+#Main menu Function
+def main_menu():
+    while True:
+        print("\n===== Quiz Maker =====")
+        print("1. Add Questions")
+        print("2. View Questions")
+        print("3. Delete a Question")
+        print("4. Exit")
+
+        choice = int(input("Choose an option (1-4): "))
+        
+        if choice == '1':
+            add_questions()
+        elif choice == '2':
+            view_questions()
+        elif choice == '3':
+            delete_question()
+        elif choice == '4':
+            print("Exiting program...")
+            break
+        else:
+            print("Invalid choice. Please select a valid option.")
+
 #Run program
 if __name__ == "__main__":
     main()
