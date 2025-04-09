@@ -38,3 +38,51 @@ b. 3
 c. magluluto
 d. magswimming
 Correct Answer: c
+
+Question #1
+qwertyui
+a. qwer
+b. qwe
+c. q
+d. w
+Correct Answer: a
+
+Question #2
+lfwugkj
+a. kaf
+b. a
+c. ef
+d. 
+Correct Answer: d
+
+Question #3
+efhr
+a. vs
+b. esg
+c. sdb
+d. dbsr
+Correct Answer: c
+
+Question #1
+df
+a. 
+b. f
+c. f
+d. f
+Correct Answer: c
+
+Question #10
+0+1
+a. 1
+b. 2
+c. 3
+d. 4
+Correct Answer: a
+
+Question #11
+1 = 1
+a. True
+b. False
+c. Can be true
+d. nope
+Correct Answer: a
