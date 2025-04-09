@@ -71,7 +71,6 @@ def delete_question():
         print("\nAll questions have been deleted.")
     else:
         print("No questions to delete.")
-    main_menu()
                     
 #Function to add questions
 def add_questions():
