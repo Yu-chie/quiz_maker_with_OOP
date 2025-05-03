@@ -26,13 +26,28 @@
     # After the quiz, display the final score
 
 #Main Menu Function
-    # Display the menu options
-    # Get user input for their menu choice
-    # If user chooses to start the quiz
-        # Ask for filename and ensure it ends with ".txt"
-        # If the file exists, load questions and start quiz
-        # If the file is not found, show error
-    # If user chooses to exit
-    # If user enters invalid option
+def main_menu():
+    while True:
+        # Display the menu options
+        print("\n========= QUIZ PLAYER =========")
+        print("1." + " Start Quiz")
+        print("2." + " Exit")
+        print("===============================")
+        
+        # Get user input for their menu choice
+        choice = input("\nEnter your choice: ").strip()
+        
+        # If user chooses to start the quiz
+        if choice == 1:
+            # Ask for filename and ensure it ends with ".txt"
+            filename = input("\nEnter quiz filename: ").strip()
+            if not filename.endswith(".txt"):
+                filename += ".txt"
+                
+            # If the file exists, load questions and start quiz
+            
+            # If the file is not found, show error
+        # If user chooses to exit
+        # If user enters invalid option
 
 #Run the Program
