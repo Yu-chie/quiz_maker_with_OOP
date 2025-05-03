@@ -8,14 +8,50 @@ import random
 from colorama import init, Style, Fore
 
 # Function to load quiz data
+def load_quiz_data(filename):
     # Initialize an list to hold quiz data
-    # Open the file in read mode
-    # Loop through the lines and extract each question set
-        # Extract question, choices, and correct answer
-        # Store the full question as a dictionary
-    # Move index to the next question
-    # Skip any unrelated lines
-    # Return the list of questions
+    quiz_data = []
+    try:
+        # Open the file in read mode
+        with open(filename, "r") as file:
+            lines = [line.strip() for line in file if line.strip() != '']
+            
+            i = 0
+            # Loop through the lines and extract each question set
+            while i < len(lines):
+                # Extract question, choices, and correct answer
+                if lines[i].startswith("Question #"):
+                    question_text = lines[i + 1]
+                    choice_a = lines[i + 2][3:]
+                    choice_b = lines[i + 3][3:]
+                    choice_c = lines[i + 4][3:]
+                    choice_d = lines[i + 5][3:]
+                    correct_answer = lines[i + 6].split(": ")[1].lower()
+                    
+                    # Store the full question as a dictionary
+                    quiz_data.append({
+                        "question": question_text, 
+                        "choices": {
+                            choice_a, 
+                            choice_b, 
+                            choice_c, 
+                            choice_d
+                        }
+                        "correct": correct_answer
+                    })
+                    
+                    # Move index to the next question
+                    i += 7
+                    
+                else:       # Skip any unrelated lines
+                    i += 1
+                    
+        # Return the list of questions
+        return quiz_data
+    
+    except Exception as e:
+        print(f"Error loading file {e}")
+        return []
 
 #Function to start quiz
     # If the question list is empty, exit the Quiz
