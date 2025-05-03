@@ -49,16 +49,50 @@ def load_quiz_data(filename):
         return []
 
 #Function to start quiz
+def start_quiz(questions):
     # If the question list is empty, exit the Quiz
+    if not questions:
+        print("No questions available in the file.")
+        time.sleep(2)
+        return
+    
     # Display welcome message
+    print("========== Welcome to thw Quiz! ==========")
     # Shuffle questions to ensure randomness
+    random.shuffle(questions)
+    
     # Initialize score
+    score = 0
+    
     # Loop through each question in the quiz
+    for idx, q in enumerate(questions, 1):
         # Display question and choices
+        print(f"\nQuestion {idx}: {q['question']}")
+        for key, choice in q['choice'].items():
+            print(f"{key}. {choice}")
+            
         # Ask user for their answer and validate input
+        while True:
+            answer = input("\nYour Answer: ").lower()
+            if answer in ['a', 'b', 'c', 'd']:
+                break
+            else:
+                print("\nInvalid answer. Try again.")
+                
         # Check if the user's answer is correct
+        if answer == q["correct"]:
+            print("Correct! 🎉")
+            score += 1
+            
         # Show the correct answer if the user was wrong
+        else:
+            correct_choice = q["choices"][q["correct"]]
+            print(f"Wrong! ❌ The correct answer was '{q["correct"]}': {correct_choice}")
+            time.sleep(2)
+            
     # After the quiz, display the final score
+    print(f"\n🎯 Quiz Completed! You scored {score} out of {len(questions)}.\n")
+    input("Press Enter to return to main menu...")
 
 #Main Menu Function
 def main_menu():
