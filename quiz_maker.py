@@ -145,6 +145,52 @@ def quiz_option():
             print(Fore.RED + "Invalid choice. Please select a valid option.")
             time.sleep(1)
 
+
+
+
+#Main Function
+def main_menu():
+    clear_console()
+    while True:
+        # List existing quizzes
+        quiz_files = [file for file in os.listdir() if file.endswith(".txt")]
+
+        print(Fore.MAGENTA + Style.BRIGHT + "\n======= Existing Quizzes =======")
+        if quiz_files:
+            for quiz in quiz_files:
+                print(Fore.YELLOW + f"- {quiz[:-4]}")
+        else:
+            print(Fore.RED + "No quizzes found.")
+        print(Fore.MAGENTA + Style.BRIGHT + "===============================")
+
+        print(Fore.CYAN + Style.BRIGHT + "\n========== Quiz Maker ==========")
+        print(Fore.GREEN + Style.BRIGHT + "1. " + Style.RESET_ALL + "Create Quiz")
+        print(Fore.GREEN + Style.BRIGHT + "2. " + Style.RESET_ALL + "Edit Quiz")
+        print(Fore.GREEN + Style.BRIGHT + "3. " + Style.RESET_ALL + "Delete Quiz")
+        print(Fore.GREEN + Style.BRIGHT + "4. " + Style.RESET_ALL + "Exit")
+        print(Fore.CYAN + Style.BRIGHT + "================================")
+
+        try:
+            option = int(input("Choose an option (1-4): "))
+        except ValueError:
+            print(Fore.RED + "Invalid input. Please enter a number.")
+            time.sleep(1)
+            continue
+        
+        if option == 1:
+            create_quiz()
+        elif option == 2:
+            edit_quiz()
+        elif option == 3:
+            delete_quiz()
+        elif option == 4:
+            print("Exiting program...")
+            time.sleep(1)
+            break
+        else:
+            print(Fore.RED + "Invalid option. Please select a valid option.")
+            time.sleep(1)
+
 #Run program
 if __name__ == "__main__":
     main_menu()
