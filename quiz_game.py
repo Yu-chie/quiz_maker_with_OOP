@@ -31,14 +31,9 @@ def load_quiz_data(filename):
                     # Store the full question as a dictionary
                     quiz_data.append({
                         "question": question_text, 
-                        "choices": {
-                            choice_a, 
-                            choice_b, 
-                            choice_c, 
-                            choice_d
-                        }
+                        "choices": {choice_a, choice_b, choice_c, choice_d}, 
                         "correct": correct_answer
-                    })
+                        })
                     
                     # Move index to the next question
                     i += 7
