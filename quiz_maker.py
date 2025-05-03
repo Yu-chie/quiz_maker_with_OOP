@@ -145,6 +145,16 @@ def quiz_option():
             print(Fore.RED + "Invalid choice. Please select a valid option.")
             time.sleep(1)
 
+#Function to create quiz file
+def create_quiz():
+    while True:
+        quiz_name = input(Fore.GREEN + "\nEnter the name of your new quiz: ").strip()
+        if os.path.exists(f"{quiz_name}.txt"):
+            print(Fore.RED + "A quiz with this name already exists. Choose another name.")
+        else:
+            print(Fore.GREEN + f"Creating new quiz: {quiz_name}")
+            quiz_option(quiz_name)
+            break
 
 
 
