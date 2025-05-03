@@ -93,6 +93,7 @@ def start_quiz(questions):
         if answer == q["correct"]:
             print("Correct! 🎉")
             time.sleep(1)
+            clear_console()
             score += 1
             
         # Show the correct answer if the user was wrong
