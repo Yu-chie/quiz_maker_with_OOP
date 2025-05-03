@@ -49,34 +49,35 @@ def question_data(question_counter):
     return question, choice_a, choice_b, choice_c, choice_d, correct_answer
 
 #Function to save quiz data to file
-def save_to_file(file, question_counter, question, choice_a, choice_b, choice_c, choice_d, correct_answer):
-    file.write(f"\nQuestion #{question_counter}")
-    file.write(f"\n{question}")
-    file.write(f"\na. {choice_a}")
-    file.write(f"\nb. {choice_b}")
-    file.write(f"\nc. {choice_c}")
-    file.write(f"\nd. {choice_d}")
-    file.write(f"\nCorrect Answer: {correct_answer}\n")
+def save_to_file(quiz_name, question_counter, question, choice_a, choice_b, choice_c, choice_d, correct_answer):
+    with open(f"{quiz_name}.txt", "a") as file:
+        file.write(f"\nQuestion #{question_counter}")
+        file.write(f"\n{question}")
+        file.write(f"\na. {choice_a}")
+        file.write(f"\nb. {choice_b}")
+        file.write(f"\nc. {choice_c}")
+        file.write(f"\nd. {choice_d}")
+        file.write(f"\nCorrect Answer: {correct_answer}\n")
 
 #Function to view question data
-def view_questions():
+def view_questions(quiz_name):
     try:
-        with open("quiz_data.txt", "r") as file:
+        with open(f"{quiz_name}.txt", "r") as file:
             content = file.read()
             if content:
                 print(Fore.MAGENTA + Style.BRIGHT + "\n========== Questions ==========")
                 print(content)
-                print(Fore.MAGENTA + Style.BRIGHT + "\n===============================")
+                print(Fore.MAGENTA + Style.BRIGHT + "===============================")
             else:
                 print(Fore.RED + "No questions available.")
     except FileNotFoundError:
         print(Fore.RED + "No quiz data file found.")
         
 #Function to delete question data
-def delete_question():
+def delete_question(quiz_name):
     confirm = input(Fore.RED + "Are you sure you want to delete all questions? (y/n): ").lower()
     if confirm == 'y':
-        with open('quiz_data.txt', 'w') as file:
+        with open(f'{quiz_name}.txt', 'w') as file:
             file.truncate(0)
         print(Fore.GREEN + "\nAll questions have been deleted.")
         time.sleep(2)
@@ -85,18 +86,15 @@ def delete_question():
         time.sleep(2)
                     
 #Function to add questions
-def add_questions():
+def add_questions(quiz_name):
     
     #Count how many questions already exists
     try:
-        with open("quiz_data.txt", "r") as file:
+        with open(f"{quiz_name}.txt", "r") as file:
             existing_data = file.read()
             question_counter = existing_data.count("Question #") + 1
     except FileNotFoundError:
         question_counter = 1
-    
-    #Open a file in append mode to save data
-    file = open("quiz_data.txt", "a")
       
     while True:
         num_question = number_of_questions()
@@ -104,41 +102,43 @@ def add_questions():
         #Loop through each question and save it
         for i in range(num_question):
             question, choice_a, choice_b, choice_c, choice_d, correct_answer = question_data(question_counter)
-            save_to_file(file, question_counter, question, choice_a, choice_b, choice_c, choice_d, correct_answer) 
+            save_to_file(quiz_name, question_counter, question, choice_a, choice_b, choice_c, choice_d, correct_answer) 
             question_counter += 1
         
         #Ask if the user wants to continue adding questions or not
         continue_input = input(Fore.YELLOW + "\nDo you wish to add more questions (y/n): ").strip().lower()
         if continue_input != 'y':
-            print(Fore.GREEN + "Returning to main menu...")
+            print(Fore.GREEN + "Returning to quiz options...")
             time.sleep(2)
             clear_console()
             break
-                
-    #Close File
-    file.close()
 
 #Quiz Option Function
-def quiz_option():
+def quiz_option(quiz_name):
     clear_console()
     while True:
-        print(Fore.CYAN + Style.BRIGHT + "\n========== Quiz Maker ==========")
+        print(Fore.CYAN + Style.BRIGHT + f"\n========== Quiz Option for {quiz_name} ==========")
         print(Fore.GREEN + Style.BRIGHT + "1. " + Style.RESET_ALL + "Add Questions")
         print(Fore.GREEN + Style.BRIGHT + "2. " + Style.RESET_ALL + "View Questions")
         print(Fore.GREEN + Style.BRIGHT + "3. " + Style.RESET_ALL + "Delete Questions")
         print(Fore.GREEN + Style.BRIGHT + "4. " + Style.RESET_ALL + "Exit")
         print(Fore.CYAN + Style.BRIGHT + "================================")
 
-        choice = int(input("Choose an option (1-4): "))
+        try:
+            choice = int(input("Enter choice (1-4): "))
+        except ValueError:
+            print(Fore.RED + "Invalid input. Please enter a number.")
+            time.sleep(1)
+            continue
         
         if choice == 1:
-            add_questions()
+            add_questions(quiz_name)
         elif choice == 2:
-            view_questions()
+            view_questions(quiz_name)
         elif choice == 3:
-            delete_question()
+            delete_question(quiz_name)
         elif choice == 4:
-            print("Exiting program...")
+            print("Going back...")
             time.sleep(1)
             break
         else:
@@ -155,7 +155,7 @@ def create_quiz():
             print(Fore.GREEN + f"Creating new quiz: {quiz_name}")
             quiz_option(quiz_name)
             break
-
+        
 # Function to edit an existing quiz
 def edit_quiz():
     quiz_name = input(Fore.GREEN + "\nEnter the name of the quiz to edit: ").strip()
@@ -172,7 +172,7 @@ def delete_quiz():
         print(Fore.GREEN + f"Quiz {quiz_name} has been deleted.")
         time.sleep(2)
     else:
-        print(Fore.RED + f"No quiz found with the name {quiz_name}.")  
+        print(Fore.RED + f"No quiz found with the name {quiz_name}.")    
 
 #Main Function
 def main_menu():
@@ -216,7 +216,7 @@ def main_menu():
         else:
             print(Fore.RED + "Invalid option. Please select a valid option.")
             time.sleep(1)
-
+        
 #Run program
 if __name__ == "__main__":
     main_menu()
