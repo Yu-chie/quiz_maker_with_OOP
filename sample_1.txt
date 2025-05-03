@@ -1,0 +1,16 @@
+
+Question #1
+Output of upper()
+a. UPPER
+b. upper
+c. Upper
+d. uppER
+Correct Answer: a
+
+Question #2
+Output of lower()
+a. LOWER
+b. lower
+c. Lower
+d. LoWEr
+Correct Answer: b
