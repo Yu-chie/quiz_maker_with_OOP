@@ -118,8 +118,8 @@ def add_questions():
     #Close File
     file.close()
 
-#Main menu Function
-def main_menu():
+#Quiz Option Function
+def quiz_option():
     clear_console()
     while True:
         print(Fore.CYAN + Style.BRIGHT + "\n========== Quiz Maker ==========")
