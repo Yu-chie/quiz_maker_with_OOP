@@ -164,6 +164,15 @@ def edit_quiz():
     else:
         print(Fore.RED + f"No quiz found with the name {quiz_name}.")
 
+# Function to delete an existing quiz
+def delete_quiz():
+    quiz_name = input(Fore.GREEN + "\nEnter the name of the quiz to delete: ").strip()
+    if os.path.exists(f"{quiz_name}.txt"):
+        os.remove(f"{quiz_name}.txt")
+        print(Fore.GREEN + f"Quiz {quiz_name} has been deleted.")
+        time.sleep(2)
+    else:
+        print(Fore.RED + f"No quiz found with the name {quiz_name}.")  
 
 #Main Function
 def main_menu():
