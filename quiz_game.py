@@ -31,9 +31,14 @@ def load_quiz_data(filename):
                     # Store the full question as a dictionary
                     quiz_data.append({
                         "question": question_text, 
-                        "choices": {choice_a, choice_b, choice_c, choice_d}, 
+                        "choices": {
+                            "a": choice_a, 
+                            "b": choice_b, 
+                            "c": choice_c, 
+                            "d": choice_d
+                        },
                         "correct": correct_answer
-                        })
+                    })
                     
                     # Move index to the next question
                     i += 7
@@ -68,7 +73,7 @@ def start_quiz(questions):
     for idx, q in enumerate(questions, 1):
         # Display question and choices
         print(f"\nQuestion {idx}: {q['question']}")
-        for key, choice in q['choice'].items():
+        for key, choice in q['choices'].items():
             print(f"{key}. {choice}")
             
         # Ask user for their answer and validate input
@@ -104,7 +109,12 @@ def main_menu():
         print("===============================")
         
         # Get user input for their menu choice
-        choice = int(input("\nEnter your choice: ").strip())
+        try:
+            choice = int(input("\nEnter your choice: ").strip())
+        except ValueError:
+            print("Invalid input. Please enter a number (1 or 2).")
+            time.sleep(1)
+            continue
         
         # If user chooses to start the quiz
         if choice == 1:
