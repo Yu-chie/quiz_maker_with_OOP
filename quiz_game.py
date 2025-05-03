@@ -70,3 +70,5 @@ def main_menu():
             time.sleep(1)
 
 #Run the Program
+if __name__ == "__main__":
+    main_menu()
