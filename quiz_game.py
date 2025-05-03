@@ -2,6 +2,10 @@
 #The user will answer the randomly selected question and check if the answer is correct.
 
 # Import libraries
+import os
+import time
+import random
+from colorama import init, Style, Fore
 
 # Function to load quiz data
     # Initialize an list to hold quiz data
