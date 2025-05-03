@@ -7,8 +7,13 @@ import time
 import random
 from colorama import init, Style, Fore
 
+#Function to clear console
+def clear_console():
+    os.system("cls" if os.name == "nt" else "clear")
+
 # Function to load quiz data
 def load_quiz_data(filename):
+    clear_console()
     # Initialize an list to hold quiz data
     quiz_data = []
     try:
@@ -62,7 +67,7 @@ def start_quiz(questions):
         return
     
     # Display welcome message
-    print("========== Welcome to the Quiz! ==========")
+    print("\n========== Welcome to the Quiz! ==========")
     # Shuffle questions to ensure randomness
     random.shuffle(questions)
     
@@ -87,6 +92,7 @@ def start_quiz(questions):
         # Check if the user's answer is correct
         if answer == q["correct"]:
             print("Correct! 🎉")
+            time.sleep(1)
             score += 1
             
         # Show the correct answer if the user was wrong
@@ -94,6 +100,7 @@ def start_quiz(questions):
             correct_choice = q["choices"][q["correct"]]
             print(f"Wrong! ❌ The correct answer was '{q["correct"]}': {correct_choice}")
             time.sleep(2)
+            clear_console()
             
     # After the quiz, display the final score
     print(f"\n🎯 Quiz Completed! You scored {score} out of {len(questions)}.\n")
@@ -102,6 +109,7 @@ def start_quiz(questions):
 #Main Menu Function
 def main_menu():
     while True:
+        clear_console()
         # Display the menu options
         print("\n========= QUIZ PLAYER =========")
         print("1." + " Start Quiz")
