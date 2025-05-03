@@ -156,6 +156,13 @@ def create_quiz():
             quiz_option(quiz_name)
             break
 
+# Function to edit an existing quiz
+def edit_quiz():
+    quiz_name = input(Fore.GREEN + "\nEnter the name of the quiz to edit: ").strip()
+    if os.path.exists(f"{quiz_name}.txt"):
+        quiz_option(quiz_name)
+    else:
+        print(Fore.RED + f"No quiz found with the name {quiz_name}.")
 
 
 #Main Function
