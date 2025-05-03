@@ -57,7 +57,7 @@ def start_quiz(questions):
         return
     
     # Display welcome message
-    print("========== Welcome to thw Quiz! ==========")
+    print("========== Welcome to the Quiz! ==========")
     # Shuffle questions to ensure randomness
     random.shuffle(questions)
     
@@ -104,7 +104,7 @@ def main_menu():
         print("===============================")
         
         # Get user input for their menu choice
-        choice = input("\nEnter your choice: ").strip()
+        choice = int(input("\nEnter your choice: ").strip())
         
         # If user chooses to start the quiz
         if choice == 1:
