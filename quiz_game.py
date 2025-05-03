@@ -49,9 +49,24 @@ def main_menu():
                 filename += ".txt"
                 
             # If the file exists, load questions and start quiz
-            
+            if os.path.exists(filename):
+                questions = load_quiz_data(filename)
+                start_quiz(questions)
+                
             # If the file is not found, show error
+            else:
+                print(f"\nFile '{filename}' not found")
+                time.sleep(2)
+                
         # If user chooses to exit
+        elif choice == 2:
+            print("\nGoodbye! 👋")
+            time.sleep(1)
+            break
+        
         # If user enters invalid option
+        else:
+            print("Invalid choice. Please enter 1 or 2.")
+            time.sleep(1)
 
 #Run the Program
