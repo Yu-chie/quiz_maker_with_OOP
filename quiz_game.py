@@ -7,6 +7,9 @@ import time
 import random
 from colorama import init, Style, Fore
 
+# Initialize colorama
+init(autoreset=True)
+
 #Function to clear console
 def clear_console():
     os.system("cls" if os.name == "nt" else "clear")
@@ -55,14 +58,14 @@ def load_quiz_data(filename):
         return quiz_data
     
     except Exception as e:
-        print(f"Error loading file {e}")
+        print(Fore.RED + f"Error loading file {e}")
         return []
 
 #Function to start quiz
 def start_quiz(questions):
     # If the question list is empty, exit the Quiz
     if not questions:
-        print("No questions available in the file.")
+        print(Fore.RED + "No questions available in the file.")
         time.sleep(2)
         return
     
@@ -87,11 +90,11 @@ def start_quiz(questions):
             if answer in ['a', 'b', 'c', 'd']:
                 break
             else:
-                print("\nInvalid answer. Try again.")
+                print(Fore.RED + "\nInvalid answer. Try again.")
                 
         # Check if the user's answer is correct
         if answer == q["correct"]:
-            print("Correct! 🎉")
+            print(Fore.GREEN + "Correct! 🎉")
             time.sleep(1)
             clear_console()
             score += 1
@@ -99,7 +102,7 @@ def start_quiz(questions):
         # Show the correct answer if the user was wrong
         else:
             correct_choice = q["choices"][q["correct"]]
-            print(f"Wrong! ❌ The correct answer was '{q["correct"]}': {correct_choice}")
+            print(Fore.RED + f"Wrong! ❌ The correct answer was '{q["correct"]}': {correct_choice}")
             time.sleep(2)
             clear_console()
             
@@ -112,16 +115,16 @@ def main_menu():
     while True:
         clear_console()
         # Display the menu options
-        print("\n========= QUIZ PLAYER =========")
-        print("1." + " Start Quiz")
-        print("2." + " Exit")
-        print("===============================")
+        print(Fore.CYAN + Style.BRIGHT + "\n========= QUIZ PLAYER =========")
+        print(Fore.GREEN + Style.BRIGHT +"1." + Style.RESET_ALL + " Start Quiz")
+        print(Fore.GREEN + Style.BRIGHT +"2." + Style.RESET_ALL + " Exit")
+        print(Fore.CYAN + Style.BRIGHT + "===============================")
         
         # Get user input for their menu choice
         try:
-            choice = int(input("\nEnter your choice: ").strip())
+            choice = int(input("Enter your choice: ").strip())
         except ValueError:
-            print("Invalid input. Please enter a number (1 or 2).")
+            print(Fore.RED + "Invalid input. Please enter a number (1 or 2).")
             time.sleep(1)
             continue
         
@@ -139,18 +142,18 @@ def main_menu():
                 
             # If the file is not found, show error
             else:
-                print(f"\nFile '{filename}' not found")
+                print(Fore.RED + f"\nFile '{filename}' not found")
                 time.sleep(2)
                 
         # If user chooses to exit
         elif choice == 2:
-            print("\nGoodbye! 👋")
+            print(Fore.GREEN + "\nGoodbye! 👋")
             time.sleep(1)
             break
         
         # If user enters invalid option
         else:
-            print("Invalid choice. Please enter 1 or 2.")
+            print(Fore.RED + "Invalid choice. Please enter 1 or 2.")
             time.sleep(1)
 
 #Run the Program
