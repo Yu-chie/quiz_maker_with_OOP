@@ -114,6 +114,18 @@ def start_quiz(questions):
 def main_menu():
     while True:
         clear_console()
+        
+        # List existing quizzes
+        quiz_files = [file for file in os.listdir() if file.endswith(".txt")]
+
+        print(Fore.MAGENTA + Style.BRIGHT + "\n======= Existing Quizzes =======")
+        if quiz_files:
+            for quiz in quiz_files:
+                print(Fore.YELLOW + f"- {quiz[:-4]}")
+        else:
+            print(Fore.RED + "No quizzes found.")
+        print(Fore.MAGENTA + Style.BRIGHT + "===============================")
+        
         # Display the menu options
         print(Fore.CYAN + Style.BRIGHT + "\n========= QUIZ PLAYER =========")
         print(Fore.GREEN + Style.BRIGHT +"1." + Style.RESET_ALL + " Start Quiz")
