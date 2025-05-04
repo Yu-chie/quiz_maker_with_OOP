@@ -1,32 +1,55 @@
-
 Question #1
-What is the capital of the Philippines?
-a. Quezon City
-b. Antipolo
-c. Manila
-d. Batanggas
-Correct Answer: c
+Which Git command is used to initialize a new repository?
+a. git start
+b. git init
+c. git create
+d. git new
+Correct Answer: b
 
 Question #2
-What is the capital of Japan?
-a. Kyoto
-b. Osaka
-c. Tokyo
-d. Aichi
+What commit type should be used when you add a new feature to the UI?
+a. fix
+b. refactor
+c. feat
+d. chore
 Correct Answer: c
 
 Question #3
-1 + 4
-a. 1
-b. 5
-c. 7
-d. No correct answer
+Which Python function converts a string input to an integer?
+a. input()
+b. str()
+c. float()
+d. int()
 Correct Answer: d
 
 Question #4
-4 ** 2 = ?
-a. 8
-b. 24
-c. 16
-d. 4
+In Python, which method adds an item to the end of a list?
+a. .add()
+b. .append()
+c. .insert()
+d. .push()
+Correct Answer: b
+
+Question #5
+Which command displays the current state of the Git working directory and staging area?
+a. git log
+b. git diff
+c. git status
+d. git remote -v
 Correct Answer: c
+
+Question #6
+Which commit type is used when you modify documentation only?
+a. docs
+b. test
+c. style
+d. build
+Correct Answer: a
+
+Question #7
+What does .zfill(5) do to the string "42"?
+a. "42000"
+b. "00042"
+c. "04200"
+d. "00420"
+Correct Answer: b
