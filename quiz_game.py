@@ -107,8 +107,12 @@ def start_quiz(questions):
             clear_console()
             
     # After the quiz, display the final score
-    print(f"\n🎯 Quiz Completed! You scored {score} out of {len(questions)}.\n")
-    input("Press Enter to return to main menu...")
+    message = f"\n🎯 Quiz Completed! You scored {score} out of {len(questions)}.\n"
+    for char in message:
+        print(Fore.CYAN + char, end='', flush=True)
+        time.sleep(0.05)
+
+    input("\nPress Enter to return to main menu...")
 
 #Main Menu Function
 def main_menu():
