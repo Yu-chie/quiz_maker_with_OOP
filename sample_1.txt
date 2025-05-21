@@ -14,3 +14,11 @@ b. lower
 c. Lower
 d. LoWEr
 Correct Answer: b
+
+Question #3
+1 + 1 = ?
+a. 1
+b. 2
+c. 3
+d. 4
+Correct Answer: b
