@@ -10,9 +10,11 @@ from colorama import init, Style, Fore
 # Initialize colorama
 init(autoreset=True)
 
+
 #Function to clear console
 def clear_console():
     os.system("cls" if os.name == "nt" else "clear")
+
 
 class QuizLoader:
     # Function to load quiz data
@@ -61,6 +63,7 @@ class QuizLoader:
         except Exception as e:
             print(Fore.RED + f"Error loading file {e}")
             return []
+
 
 class PlayQuiz:
     def __init__(self, questions):
@@ -117,6 +120,7 @@ class PlayQuiz:
             time.sleep(0.05)
 
         input("\nPress Enter to return to main menu...")
+
 
 class QuizPlayer:
     def __init__(self):
