@@ -24,17 +24,17 @@ def load_quiz_data(filename):
         with open(filename, "r") as file:
             lines = [line.strip() for line in file if line.strip() != '']
             
-            i = 0
+            index = 0
             # Loop through the lines and extract each question set
-            while i < len(lines):
+            while index < len(lines):
                 # Extract question, choices, and correct answer
-                if lines[i].startswith("Question #"):
-                    question_text = lines[i + 1]
-                    choice_a = lines[i + 2][3:]
-                    choice_b = lines[i + 3][3:]
-                    choice_c = lines[i + 4][3:]
-                    choice_d = lines[i + 5][3:]
-                    correct_answer = lines[i + 6].split(": ")[1].lower()
+                if lines[index].startswith("Question #"):
+                    question_text = lines[index + 1]
+                    choice_a = lines[index + 2][3:]
+                    choice_b = lines[index + 3][3:]
+                    choice_c = lines[index + 4][3:]
+                    choice_d = lines[index + 5][3:]
+                    correct_answer = lines[index + 6].split(": ")[1].lower()
                     
                     # Store the full question as a dictionary
                     quiz_data.append({
@@ -49,10 +49,10 @@ def load_quiz_data(filename):
                     })
                     
                     # Move index to the next question
-                    i += 7
+                    index += 7
                     
                 else:       # Skip any unrelated lines
-                    i += 1
+                    index += 1
                     
         # Return the list of questions
         return quiz_data
@@ -71,6 +71,7 @@ def start_quiz(questions):
     
     # Display welcome message
     print("\n========== Welcome to the Quiz! ==========")
+    
     # Shuffle questions to ensure randomness
     random.shuffle(questions)
     
@@ -78,11 +79,11 @@ def start_quiz(questions):
     score = 0
     
     # Loop through each question in the quiz
-    for idx, q in enumerate(questions, 1):
+    for question_index, question_item in enumerate(questions, 1):
         # Display question and choices
-        print(f"\nQuestion {idx}: {q['question']}")
-        for key, choice in q['choices'].items():
-            print(f"{key}. {choice}")
+        print(f"\nQuestion {question_index}: {question_item['question']}")
+        for choice_key, choice_text in question_item['choices'].items():
+            print(f"{choice_key}. {choice_text}")
             
         # Ask user for their answer and validate input
         while True:
@@ -93,7 +94,7 @@ def start_quiz(questions):
                 print(Fore.RED + "\nInvalid answer. Try again.")
                 
         # Check if the user's answer is correct
-        if answer == q["correct"]:
+        if answer == question_item["correct"]:
             print(Fore.GREEN + "Correct! 🎉")
             time.sleep(1)
             clear_console()
@@ -101,8 +102,8 @@ def start_quiz(questions):
             
         # Show the correct answer if the user was wrong
         else:
-            correct_choice = q["choices"][q["correct"]]
-            print(Fore.RED + f"Wrong! ❌ The correct answer was '{q["correct"]}': {correct_choice}")
+            correct_choice = question_item["choices"][question_item["correct"]]
+            print( Fore.RED + f"Wrong! ❌ The correct answer was '{question_item['correct']}': {correct_choice}")
             time.sleep(2)
             clear_console()
             
