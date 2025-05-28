@@ -1,3 +1,4 @@
+import time
 from colorama import init, Fore, Back, Style
 init(autoreset=True)
 from utility import clear_console
