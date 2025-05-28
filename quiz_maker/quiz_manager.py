@@ -15,7 +15,8 @@ class QuizManager:
     def create_quiz(self):
         while True:
             quiz_name = input(Fore.GREEN + "\nEnter the name of your new quiz: ").strip()
-            if os.path.exists(f"{quiz_name}.txt"):
+            file_path = os.path.join("quizzes", f"{quiz_name}.txt")
+            if os.path.exists(file_path):
                 print(Fore.RED + "A quiz with this name already exists. Choose another name.")
             else:
                 print(Fore.GREEN + f"Creating new quiz: {quiz_name}")
@@ -25,16 +26,19 @@ class QuizManager:
     # Function to edit an existing quiz
     def edit_quiz(self):
         quiz_name = input(Fore.GREEN + "\nEnter the name of the quiz to edit: ").strip()
-        if os.path.exists(f"{quiz_name}.txt"):
+        file_path = os.path.join("quizzes", f"{quiz_name}.txt")
+        if os.path.exists(file_path):
             self.quiz_option(quiz_name)
         else:
             print(Fore.RED + f"No quiz found with the name {quiz_name}.")
+            time.sleep(2)
 
     # Function to delete an existing quiz
     def delete_quiz(self):
         quiz_name = input(Fore.GREEN + "\nEnter the name of the quiz to delete: ").strip()
-        if os.path.exists(f"{quiz_name}.txt"):
-            os.remove(f"{quiz_name}.txt")
+        file_path = os.path.join("quizzes", f"{quiz_name}.txt")
+        if os.path.exists(file_path):
+            os.remove(file_path)
             print(Fore.GREEN + f"Quiz {quiz_name} has been deleted.")
             time.sleep(2)
         else:
@@ -77,7 +81,10 @@ class QuizManager:
         clear_console()
         while True:
             # List existing quizzes
-            quiz_files = [file for file in os.listdir() if file.endswith(".txt")]
+            quiz_folder = "quizzes"
+            if not os.path.exists(quiz_folder):
+                os.makedirs(quiz_folder)
+            quiz_files = [file for file in os.listdir(quiz_folder) if file.endswith(".txt")]
 
             print(Fore.MAGENTA + Style.BRIGHT + "\n======= Existing Quizzes =======")
             if quiz_files:
