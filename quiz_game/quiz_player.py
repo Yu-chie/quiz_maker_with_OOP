@@ -11,14 +11,15 @@ init(autoreset=True)
 class QuizPlayer:
     def __init__(self):
         self.loader = QuizLoader() 
+        self.quiz_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'quizzez')
     
     #Main Menu Function
     def main_menu(self):
         while True:
             clear_console()
             
-            # List existing quizzes
-            quiz_files = [file for file in os.listdir() if file.endswith(".txt")]
+            # List existing quizzes in folder
+            quiz_files = [file for file in os.listdir(self.quiz_folder) if file.endswith(".txt")]
 
             print(Fore.MAGENTA + Style.BRIGHT + "\n======= Existing Quizzes =======")
             if quiz_files:
@@ -48,15 +49,17 @@ class QuizPlayer:
                 filename = input("\nEnter quiz filename: ").strip()
                 if not filename.endswith(".txt"):
                     filename += ".txt"
-                    
+                
+                full_path = os.path.join(self.quiz_folder, filename)
+                
                 # If the file exists, load questions and start quiz
-                if os.path.exists(filename):
-                    questions = self.loader.load_quiz_data(filename)
+                if os.path.exists(full_path):
+                    questions = self.loader.load_quiz_data(full_path)
                     game = PlayQuiz(questions)
-                    game.start_quiz()    
+                    game.start_quiz()   
                 # If the file is not found, show error
                 else:
-                    print(Fore.RED + f"\nFile '{filename}' not found")
+                    print(Fore.RED + f"\nFile '{filename}' not found in quiz folder")
                     time.sleep(2)
                     
             # If user chooses to exit
