@@ -1,3 +1,8 @@
+import time
+import random
+from colorama import Fore
+from utility import clear_console
+
 class PlayQuiz:
     def __init__(self, questions):
         self.questions = questions

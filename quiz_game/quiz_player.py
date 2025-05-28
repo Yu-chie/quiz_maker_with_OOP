@@ -1,3 +1,13 @@
+import os
+import time
+from colorama import init, Fore, Style
+from quiz_loader import QuizLoader
+from play_quiz import PlayQuiz
+from utility import clear_console
+
+# Initialize colorama
+init(autoreset=True)
+
 class QuizPlayer:
     def __init__(self):
         self.loader = QuizLoader() 

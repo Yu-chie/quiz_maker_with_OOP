@@ -1,3 +1,7 @@
+import os
+from colorama import Fore
+from utility import clear_console
+
 class QuizLoader:
     # Function to load quiz data
     def load_quiz_data(self, filename):
