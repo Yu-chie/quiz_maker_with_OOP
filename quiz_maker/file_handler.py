@@ -5,10 +5,9 @@ init(autoreset=True)
 
 class FileHandler:
     def __init__(self):
-        # Folder to save quiz files
-        self.folder = "quizzes"
+        self.folder = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'quizzez'))
         os.makedirs(self.folder, exist_ok=True)
-
+        
     #Function to save quiz data to file
     def save_to_file(self, quiz_name, question_counter, question, choice_a, choice_b, choice_c, choice_d, correct_answer):
         file_path = os.path.join(self.folder, f"{quiz_name}.txt")

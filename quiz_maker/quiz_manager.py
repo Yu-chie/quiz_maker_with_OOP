@@ -15,7 +15,7 @@ class QuizManager:
     def create_quiz(self):
         while True:
             quiz_name = input(Fore.GREEN + "\nEnter the name of your new quiz: ").strip()
-            file_path = os.path.join("quizzes", f"{quiz_name}.txt")
+            file_path = os.path.join(self.file_handler.folder, f"{quiz_name}.txt")
             if os.path.exists(file_path):
                 print(Fore.RED + "A quiz with this name already exists. Choose another name.")
             else:
@@ -26,7 +26,7 @@ class QuizManager:
     # Function to edit an existing quiz
     def edit_quiz(self):
         quiz_name = input(Fore.GREEN + "\nEnter the name of the quiz to edit: ").strip()
-        file_path = os.path.join("quizzes", f"{quiz_name}.txt")
+        file_path = os.path.join(self.file_handler.folder, f"{quiz_name}.txt")
         if os.path.exists(file_path):
             self.quiz_option(quiz_name)
         else:
@@ -36,7 +36,7 @@ class QuizManager:
     # Function to delete an existing quiz
     def delete_quiz(self):
         quiz_name = input(Fore.GREEN + "\nEnter the name of the quiz to delete: ").strip()
-        file_path = os.path.join("quizzes", f"{quiz_name}.txt")
+        file_path = os.path.join(self.file_handler.folder, f"{quiz_name}.txt")
         if os.path.exists(file_path):
             os.remove(file_path)
             print(Fore.GREEN + f"Quiz {quiz_name} has been deleted.")
