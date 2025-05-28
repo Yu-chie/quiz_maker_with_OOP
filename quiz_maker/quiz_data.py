@@ -48,7 +48,8 @@ class QuizData:
         
         #Count how many questions already exists
         try:
-            with open(f"{quiz_name}.txt", "r") as file:
+            file_path = os.path.join("quizzes", f"{quiz_name}.txt")
+            with open(file_path, "r") as file:
                 existing_data = file.read()
                 question_counter = existing_data.count("Question #") + 1
         except FileNotFoundError:
