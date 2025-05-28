@@ -11,7 +11,7 @@ init(autoreset=True)
 class QuizPlayer:
     def __init__(self):
         self.loader = QuizLoader() 
-        self.quiz_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'quizzez')
+        self.quiz_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'quizzes')
     
     #Main Menu Function
     def main_menu(self):
